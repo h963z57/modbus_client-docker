@@ -52,22 +52,13 @@ create_users () {
 }
 
 
-# # ============== Create tmp folder ===============
-# echo "Create folder for selfhealing"
-# mkdir /run/modbus
-
-# # =========== Create logdir & logfiles ===========
-# echo "Create logdir"
-# mkdir /var/log/modbus
-# echo "Create log files"
-# touch /var/log/modbus/socat.log
-# touch /var/log/modbus/modbus_client.log
-
-# =============== RENAME-IT ==================
+# =============== Initialisatin ====================
 for MODBUS_DEVICE in $MODBUS_DEVICES
     do
         generate_configs
     done
+
+# ================ User create =====================
 create_users
 
 # ============== Enable selfheal ===================
