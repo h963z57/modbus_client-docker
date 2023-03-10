@@ -20,8 +20,9 @@ RUN mkdir /run/modbus \
     && touch /var/log/modbus/modbus_client.log
 
 RUN sed -i '/session    required     pam_loginuid.so/c\#session    required   pam_loginuid.so' /etc/pam.d/cron \
-    && chmod 0600 /source/files/selfhealling.sh \
-    && echo "*/1   *   *   *   *   sh /source/files/selfhealling.sh >> /var/log/modbus/selfhealling.log" >> /var/spool/cron/crontabs/root
+    && chmod +x /source/files/selfhealling.sh \
+    && echo "*/1   *   *   *   *   sh /source/files/selfhealling.sh >> /var/log/modbus/selfhealling.log" >> /var/spool/cron/crontabs/root \
+    && chmod 0600 /var/spool/cron/crontabs/root
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
