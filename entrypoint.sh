@@ -18,7 +18,7 @@ generate_configs () {
     nohup socat -d -d -d -x PTY,raw,b9600,parenb=0,cstopb=2,cs8,link=/dev/ttyRS485-$MODBUS_VALUE tcp:$MODBUS_KEY:502 > /var/log/modbus/socat.log 2>& 1& < /dev/null &
 
     echo "Create run file for $MODBUS_VALUE"
-    echo "nohup socat -d -d -d -x PTY,raw,b9600,parenb=0,cstopb=2,cs8,link=/dev/ttyRS485-$MODBUS_VALUE tcp:$MODBUS_KEY:502 > /var/log/modbus/socat.log 2>& 1& < /dev/null &" >> /run/modbus/$MODBUS_VALUE.sh
+    echo "nohup socat -d -d -d -x PTY,raw,b115200,parenb=0,cstopb=2,cs8,link=/dev/ttyRS485-$MODBUS_VALUE tcp:$MODBUS_KEY:502 > /var/log/modbus/socat.log 2>& 1& < /dev/null &" >> /run/modbus/$MODBUS_VALUE.sh
 
     echo "Cleanup..."
     unset MODBUS_DEVICE
